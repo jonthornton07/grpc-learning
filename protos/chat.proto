@@ -1,0 +1,32 @@
+// syntax = "proto3";
+
+// option java_multiple_files = true;
+// option java_package = "com.thornton";
+// option java_outer_classname = "ChatProto";
+
+// package chat;
+
+// service ChatService {
+//   rpc chat (stream ChatMessage) returns (stream ChatMessage) {}
+// }
+
+// message ChatMessage {
+//   string author = 1;
+//   string message = 2;
+// }
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.thornton";
+option java_outer_classname = "ChatProto";
+
+package com.thornton.grpc.api;
+
+service ChatService {
+  rpc chat (stream ChatMessage) returns (stream ChatMessage) {}
+}
+
+message ChatMessage {
+  string author = 1;
+  string message = 2;
+}
