@@ -12,27 +12,23 @@ var packageDefinition = protoLoader.loadSync(
     });
 
 var chatProto = grpc.loadPackageDefinition(packageDefinition).com.thornton.grpc.api;
+var callMap = new Map()
 
-/**
- * Implements the SayHello RPC method.
- */
 function chat(call) {
-  // callback(null, {message: 'Hello ' + call.request.name});
   call.on('data', function(chat) {
-    console.log('chat ' + chat)
-    console.log(chat.message + '-' + chat.author)
-    call.write(chat);
-    call.write(chat);
-  });
-  call.on('end', function() {
-    call.end();
+    if (callMap.get(chat.author) === undefined) {
+      callMap.set(chat.author, call)
+    }
+    console.log('Chat received ' + chat.message + ' - ' + chat.author)
+    for(let [author, call] of callMap) {
+      if (author !== chat.author) {
+        console.log(author)
+        call.write(chat)
+      }
+    }
   });
 }
 
-/**
- * Starts an RPC server that receives requests for the Greeter service at the
- * sample server port
- */
 function main() {
   console.log('starting')
   var server = new grpc.Server();
