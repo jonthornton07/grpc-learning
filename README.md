@@ -6,4 +6,4 @@ The goal of this repository is to learn about gRPC and all of the surrounding co
 `gprc-android` contains an Android project setup to hit the `grpc-node` chat service.
 
 # Presentation
-[gRPC + Android Chat Application.pdf](https://github.com/jonthornton07/grpc-learning/files/8862266/gRPC.%2B.Android.Chat.Application.pdf)
+[Andorid gRPC Presentation](https://docs.google.com/presentation/d/1ZstQNkIdxnJQKzD6x3J1OVIMdF8yoOXU_4QxarKcYvA/edit?usp=sharing)
